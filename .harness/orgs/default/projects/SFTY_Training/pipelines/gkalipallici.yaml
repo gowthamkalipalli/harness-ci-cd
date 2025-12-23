@@ -41,3 +41,4 @@ pipeline:
         connectorRef: gkalipalligitconnector
         repoName: harness-ci-cd/spring-boot-app
         build: <+input>
+        sparseCheckout: []
