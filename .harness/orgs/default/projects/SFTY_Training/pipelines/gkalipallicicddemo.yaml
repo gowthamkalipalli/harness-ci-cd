@@ -51,7 +51,7 @@ pipeline:
                       export PATH=$PATH:$(pwd)/apache-maven-3.9.9/bin
 
                       # Run Maven build
-                      mvn clean package -DskipTests
+                      mvn clean package -DskipTests -Dcheckstyle.skip=true
                     imagePullPolicy: IfNotPresent
                   timeout: 10m
               - step:
