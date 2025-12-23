@@ -1,0 +1,14 @@
+inputSet:
+  pipeline:
+    identifier: gkalipallici
+    properties:
+      ci:
+        codebase:
+          build:
+            spec:
+              branch: ""
+            type: branch
+  name: gkalipalli-inputset
+  identifier: gkalipalliinputset
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
