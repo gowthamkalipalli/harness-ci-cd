@@ -8,8 +8,9 @@ pipeline:
     ci:
       codebase:
         connectorRef: gkalipalligitconnector
-        repoName: harness-ci-cd
+        repoName: harness-ci-cd/spring-boot-app
         build: <+input>
+        sparseCheckout: []
   stages:
     - stage:
         name: CI
