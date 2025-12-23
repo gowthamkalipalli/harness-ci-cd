@@ -40,8 +40,8 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: alpine
-                    shell: Bash
-                    command: |-
+                    shell: Sh
+                    command: |
                       cd spring-boot-app
                       # Install Maven 3.9.6 and OpenJDK 17
                       apk add --no-cache openjdk17 wget
@@ -64,4 +64,4 @@ pipeline:
                       - v1
                     dockerfile: spring-boot-app/Dockerfile
             rollbackSteps: []
-  description: This pipeline was updated by Harness AI on 2025-12-23 06:01:29 UTC by Gowtham.
+  description: This pipeline was updated by Harness AI on 2025-12-23 06:08:09 UTC by Gowtham.
