@@ -43,14 +43,9 @@ pipeline:
                     shell: Sh
                     command: |-
                       cd spring-boot-app
-                      # Install Maven 3.9.6 and OpenJDK 17
-                      apk add --no-cache openjdk17 wget
 
-                      wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
-                      tar -xzf apache-maven-3.9.9-bin.tar.gz
-                      export PATH=$PATH:$(pwd)/apache-maven-3.9.9/bin
-
-                      # Run Maven build
+                      # The Maven image already has OpenJDK 17 and Maven 3.9.x installed
+                      # Just run the Maven build directly
                       mvn clean package -DskipTests -Dcheckstyle.skip=true
                     imagePullPolicy: IfNotPresent
                   timeout: 10m
