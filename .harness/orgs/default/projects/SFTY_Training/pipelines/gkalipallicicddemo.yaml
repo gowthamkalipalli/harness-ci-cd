@@ -41,7 +41,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: alpine
                     shell: Bash
-                    command: |
+                    command: |-
                       cd spring-boot-app
                       # Install Maven 3.9.6 and OpenJDK 17
                       apk add --no-cache openjdk17 wget
