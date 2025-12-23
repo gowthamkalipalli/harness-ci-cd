@@ -3,7 +3,8 @@ pipeline:
   identifier: gkalipallicicddemo
   projectIdentifier: SFTY_Training
   orgIdentifier: default
-  tags: {}
+  tags:
+    ai_generated: "true"
   properties:
     ci:
       codebase:
@@ -33,6 +34,26 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Maven Build
+                  identifier: build_spring_boot_app
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: alpine
+                    shell: Bash
+                    command: |
+                      cd spring-boot-app
+                      # Install Maven 3.9.6 and OpenJDK 17
+                      apk add --no-cache openjdk17 wget
+                      wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+                      tar -xzf apache-maven-3.9.6-bin.tar.gz
+                      export PATH=$PATH:$(pwd)/apache-maven-3.9.6/bin
+
+                      # Run Maven build
+                      mvn clean package -DskipTests
+                    imagePullPolicy: IfNotPresent
+                  timeout: 10m
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
@@ -42,3 +63,5 @@ pipeline:
                     tags:
                       - v1
                     dockerfile: spring-boot-app/Dockerfile
+            rollbackSteps: []
+  description: This pipeline was updated by Harness AI on 2025-12-23 06:01:29 UTC by Gowtham.
