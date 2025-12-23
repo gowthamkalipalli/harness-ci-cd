@@ -4,17 +4,10 @@ pipeline:
   projectIdentifier: SFTY_Training
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: gkalipalligitconnector
-        repoName: harness-ci-cd/spring-boot-app
-        build: <+input>
-        sparseCheckout: []
   stages:
     - stage:
-        name: CI
-        identifier: CI
+        name: CI-Build
+        identifier: CIBuild
         description: ""
         type: CI
         spec:
@@ -42,3 +35,9 @@ pipeline:
                     repo: gowthamk4/harness
                     tags:
                       - v1
+  properties:
+    ci:
+      codebase:
+        connectorRef: gkalipalligitconnector
+        repoName: harness-ci-cd/spring-boot-app
+        build: <+input>
