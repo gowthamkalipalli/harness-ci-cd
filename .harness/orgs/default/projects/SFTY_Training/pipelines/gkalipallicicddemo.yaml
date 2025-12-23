@@ -39,15 +39,16 @@ pipeline:
                   identifier: build_spring_boot_app
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine
+                    image: maven:3.9-eclipse-temurin-17
                     shell: Sh
-                    command: |
+                    command: |-
                       cd spring-boot-app
                       # Install Maven 3.9.6 and OpenJDK 17
                       apk add --no-cache openjdk17 wget
-                      wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-                      tar -xzf apache-maven-3.9.6-bin.tar.gz
-                      export PATH=$PATH:$(pwd)/apache-maven-3.9.6/bin
+
+                      wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+                      tar -xzf apache-maven-3.9.9-bin.tar.gz
+                      export PATH=$PATH:$(pwd)/apache-maven-3.9.9/bin
 
                       # Run Maven build
                       mvn clean package -DskipTests
